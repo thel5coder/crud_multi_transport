@@ -103,3 +103,7 @@ func (c *UserGRPCClient) Delete(ID string) *protobuf.Response{
 	return res
 }
 
+func NewUserGrRPCClient(host string) *UserGRPCClient{
+	return &UserGRPCClient{Client: NewGRPCClient(host)}
+}
+
