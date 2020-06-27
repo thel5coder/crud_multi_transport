@@ -1,0 +1,61 @@
+syntax = "proto3";
+package protobuf;
+
+message UserResponse{
+  string ID = 1;
+  string fullName = 2;
+  string email = 3;
+  string mobilePhone = 4;
+  string createdAt = 5;
+  string updatedAt = 6;
+  string deletedAt = 7;
+}
+
+message PaginationResponse {
+  int32 currentPage = 1;
+  int32 lastPage = 2;
+  int32 total = 3;
+  int32 perPage = 4;
+}
+
+message Response{
+  string errorMessage = 1;
+  repeated UserResponse data = 2;
+  PaginationResponse pagination = 3;
+}
+
+message UserRequest{
+  string fullName = 1;
+  string email = 2;
+  string password = 3;
+  string mobilePhone = 4;
+}
+
+message BrowseRequest{
+  string search = 1;
+  string sort = 2;
+  string order = 3;
+  int32 page = 4;
+  int32 limit = 5;
+}
+
+message ReadRequest{
+  string ID = 1;
+}
+
+message EditRequest {
+  string ID = 1;
+  UserRequest userRequest = 2;
+}
+
+message DeleteRequest{
+  string ID = 1;
+}
+
+service User {
+  rpc Browse(BrowseRequest) returns (Response) {}
+  rpc Read(ReadRequest) returns(Response) {}
+  rpc Edit(EditRequest) returns(Response) {}
+  rpc Add(UserRequest) returns(Response) {}
+  rpc Delete(DeleteRequest) returns(Response){}
+}
