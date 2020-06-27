@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "be6192cd-d7b1-4067-86fa-3f71557a0cd2",
+		"name": "CrudMultipleTransport",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User::Browse",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User::Read",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user/01ce1e75-4fef-4c33-97a8-137e99790c39",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"01ce1e75-4fef-4c33-97a8-137e99790c39"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User::Edit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\":\"syaikhul hadi\",\n    \"email\":\"my.ant2008@gmail.com\",\n    \"mobile_phone\":\"+628814388476\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user/fa4e391f-3928-4a4b-8204-e0b2dbfde7a5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"fa4e391f-3928-4a4b-8204-e0b2dbfde7a5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User::Add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\":\"sss\",\n    \"email\":\"ssss@gmail.com\",\n    \"mobile_phone\":\"+628123854334\",\n    \"password\":\"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User::Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user/01ce1e75-4fef-4c33-97a8-137e99790c39",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"01ce1e75-4fef-4c33-97a8-137e99790c39"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Auth::Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "73d8b941-389a-41b8-86b7-9ac397b24f52",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", data.data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"vivi@gmail.com\",\n    \"password\":\"1234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth::Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\":\"Muta Avivi\",\n    \"email\":\"muta.avivi@gmail.com\",\n    \"mobile_phone\":\"+62848778474\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
